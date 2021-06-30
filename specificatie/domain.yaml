@@ -203,6 +203,15 @@ components:
                         De identificaties van de stukdelen (paragrafen in een akte met een rechtsfeit) waarin dit beslag is vermeld
           items:
             type: "string"
+    BijbehorendAppartementsrecht:
+      type: "object"
+      description: |
+                    De appartementsrechten die bij deze KadastraalOnroerende Zaak (grondperceel) horen
+      properties:
+        kadastraalOnroerendeZaakIdentificatie:
+          type: "string"
+        appartementsrechtVolgnummer:
+          type: "string"
     ErfpachtCanon:
       type: "object"
       description: |
@@ -264,14 +273,8 @@ components:
       properties:
         aard:
           $ref: "#/components/schemas/Waardelijst"
-        kadastraalOnroerendeZaakIdentificatie:
-          description: |
-                        De identificatie(s) van de Kadastraal Onroerende Za(a)k(en).
-          type: "string"
-        indicatieVervallenKadastraalOnroerendeZaak:
-          description: |
-                        Geeft aan of de filiatie verwijst naar een vervallen kadastraal onroerende zaak.
-          type: "boolean"
+        kadastraalOnroerendeZaak:
+          $ref: "#/components/schemas/KadastraalOnroerendeZaakFiliatie"
     Geboorte:
       type: "object"
       description: |
@@ -570,12 +573,12 @@ components:
           type: "array"
           items:
             type: "string"
-        bijbehorendeAppartementsrechtIdentificaties:
+        bijbehorendeAppartementsrechten:
           description: |
-                      De kadstraalOnroerendeZaakidentificaties van de actuele appartementsrechten die bij deze KadastraalOnroerende Zaak (grondperceel) horen
+                      De verwijzingen naar de actuele appartementsrechten die bij deze KadastraalOnroerende Zaak (grondperceel) horen
           type : "array"
           items:
-            type: "string"
+            $ref: "#/components/schemas/BijbehorendAppartementsrecht"
         isVermeldInStukdeelIdentificaties:
           type: "array"
           items:
@@ -590,6 +593,19 @@ components:
                         Dit kan een aangeboden stuk of een kadasterstuk zijn.
           items:
             type: string
+    KadastraalOnroerendeZaakFiliatie:
+      type: "object"
+      description: |
+                    De eigenschappen van de kadastraalOnroerendeZaak die gerelateerd is.
+      properties:
+        identificatie:
+          description: |
+                        De identificatie van de Kadastraal Onroerende Zaak.
+          type: "string"
+        indicatieVervallen:
+          description: |
+                        Geeft aan of de er verwezen wordt een vervallen kadastraal onroerende zaak.
+          type: "boolean"
     Kadasterverzoek:
       type: "object"
       description: |
