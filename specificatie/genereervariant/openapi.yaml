@@ -3402,11 +3402,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/HalLink'
+        bijbehorendeErfpachters:
+          type: array
+          description: |
+            Zakelijk gerechtigden die erfpachter zijn, omdat zij eigenaar zijn van een recht van erfpacht OF hun zakelijk recht is ontstaan uit een splitsing van het recht van erfpacht. Dit zijn de erfpachters van het perceel OF de eigenaren van een appartementsrecht dat is ontstaan uit de splitsing van het recht van erfpacht van het perceel.
+          items:
+            $ref: '#/components/schemas/HalLink'
     KadastraalOnroerendeZaakEmbedded:
       type: object
       properties:
         zakelijkGerechtigden:
           type: array
+          items:
+            $ref: '#/components/schemas/ZakelijkGerechtigdeHal'
+        bijbehorendeErfpachters:
+          type: array
+          description: |
+            Zakelijk gerechtigden die erfpachter zijn, omdat zij eigenaar zijn van een recht van erfpacht OF hun zakelijk recht is ontstaan uit een splitsing van het recht van erfpacht. Dit zijn de erfpachters van het perceel OF de eigenaren van een appartementsrecht dat is ontstaan uit de splitsing van het recht van erfpacht van het perceel.
           items:
             $ref: '#/components/schemas/ZakelijkGerechtigdeHal'
         privaatrechtelijkeBeperkingen:
